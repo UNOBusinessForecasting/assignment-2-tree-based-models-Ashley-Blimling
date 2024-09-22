@@ -29,6 +29,4 @@ pred = modelFit.predict(test)
 
 preddf = pd.DataFrame(pred, columns = ["predict_meal"])
 
-preddf["predicted_meal"] = pred_df["predicted_meal"].astype(int)
-
-print(pred_df.head())
+preddf["predict_meal"] = preddf["predict_meal"].astype(int)
