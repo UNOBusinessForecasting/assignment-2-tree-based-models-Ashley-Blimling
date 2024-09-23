@@ -25,12 +25,12 @@ test = tdata.drop(columns=["id", "DateTime"])
 
 test = test.reindex(columns = x.columns)
 
-pred = modelFit.predict(test)
+predTest = modelFit.predict(test)
 
-preddf = pd.DataFrame(pred, columns = ["predict_meal"])
+preddf = pd.DataFrame(predTest, columns = ["predict_meal"])
 
 preddf["predict_meal"] = preddf["predict_meal"].astype(int)
 
 pred = preddf["predict_meal"].tolist()
 
-print(preddf)
+print(preddf.value_counts())
