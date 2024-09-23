@@ -8,14 +8,14 @@ Original file is located at
 """
 
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
+from xgboost import XGBClassifier
 
 data = pd.read_csv("https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv")
 
 y = data["meal"]
 x = data.drop(columns=["meal", "id", "DateTime", "Total", "Discounts"])
 
-model = RandomForestClassifier(n_estimators = 200, max_depth = 10, n_jobs = -1, class_weight = "balanced")
+model = XGBClassifier(n_estimators = 50, max_depth = 3, learning_rate = 0.5, objective = "binary:logistic", scale_pos_weight = (len(y) - sum(y)) / sum(y))
 
 modelFit = model.fit(x, y)
 
