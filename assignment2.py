@@ -15,7 +15,7 @@ data = pd.read_csv("https://github.com/dustywhite7/Econ8310/raw/master/Assignmen
 y = data["meal"]
 x = data.drop(columns=["meal", "id", "DateTime", "Total", "Discounts"])
 
-model = RandomForestClassifier(n_estimators = 100, max_depth = 5, n_jobs = -1)
+model = RandomForestClassifier(n_estimators = 200, max_depth = 10, n_jobs = -1, class_weight = "balanced")
 
 modelFit = model.fit(x, y)
 
@@ -33,4 +33,4 @@ preddf["predict_meal"] = preddf["predict_meal"].astype(int)
 
 pred = preddf["predict_meal"].tolist()
 
-print(preddf.head())
+print(preddf)
